@@ -205,18 +205,10 @@
     }); 
 
     //handle global error
-    function reportError(errorMessage, url, lineNumber) {
-      const text = `Have error`;
-      TrackJs.track(text);
+    window.onerror = function(message, url, lineNumber, columnNumber, error) {
+      console.log('Error in the program');
+      return true;
     }
-
-    if(window.onerror) {
-      var newErrorHandler = (errorMessage, url, lineNumber) => {reportError(errorMessage, url, lineNumber);};
-      window.onerror = newErrorHandler;
-    } else {
-      window.onerror = reportError;
-    }
-
   </script>
 </body>
 
